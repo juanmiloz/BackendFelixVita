@@ -4,7 +4,7 @@ import { Metric } from "../entities/metric.entity";
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
+    host: "postgres",
     port: 5432,
     username: "admin",
     password: "password",

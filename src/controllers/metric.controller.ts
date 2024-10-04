@@ -9,7 +9,6 @@ class MetricController {
             const metrics = await metricService.getUserMetrics(req.params.username);            
             return res.status(200).json({ metrics: metrics });
         }catch (err){
-            console.log("controlado2")
             if( err instanceof Error){
                 return res.status(500).json({ message: err.message });
             } else {

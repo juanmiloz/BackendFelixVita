@@ -11,12 +11,27 @@ const app: Express = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: 'http://localhost:4200', // Cambia esto por la URL de tu frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  origin: "*", // Cambia esto por la URL de tu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
   allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+  optionsSuccessStatus: 200,
 };
 
+// app.use(function(req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', ['Content-Type', "Authorization"]);
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   next();
+// });
 app.use(cors(corsOptions))
+
+// app.options('*', cors(corsOptions))
+
+// app.use(cors({
+//   origin: 'http://localhost:4200',
+// }));
+
 app.use(express.json());
 
 routes(app);
